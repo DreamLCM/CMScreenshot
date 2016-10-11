@@ -23,7 +23,7 @@ open class CMButton: UIButton {
 class ShowImageViewController: UIViewController {
     
     
-    typealias ButtonShareAction = (UIImage) -> Void
+    typealias ButtonShareAction = (UIImage,UIViewController) -> Void
     var buttonShareAction: ButtonShareAction?
     
     // 成员变量
@@ -32,6 +32,7 @@ class ShowImageViewController: UIViewController {
     var imageView = UIImageView()
     var scrollView = UIScrollView()
     var image = UIImage()
+    var imageViewLeftDown = UIImageView()
     var titleButton = ""
     var textColor = UIColor()
     override func viewDidLoad() {
@@ -57,6 +58,8 @@ class ShowImageViewController: UIViewController {
         scrollView.layer.masksToBounds = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
+        // 禁止滑动
+        scrollView.isScrollEnabled = false
         self.view.addSubview(scrollView)
         
         // imageView
@@ -88,17 +91,21 @@ class ShowImageViewController: UIViewController {
         self.view.addSubview(cancelBtn)
         
         
+        imageViewLeftDown = UIImageView(frame: CGRect(x: 0, y: 200, width: 100, height: 64))
+        imageViewLeftDown.image = UIImage(named: "swift.png")
+        self.view.addSubview(imageViewLeftDown)
+        
+        
         
     }
     
     
     // 分享
     func shareBtnAction(sender: CMButton) {
-        self.buttonShareAction?(self.image)
+        self.buttonShareAction?(self.image,self)
 //        print("点击了分享按钮")
         
-//        let noti = NotificationCenter.default
-//        noti.post(name: NSNotification.Name(rawValue: "share"), object: nil, userInfo: nil)
+
         
         
         
