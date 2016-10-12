@@ -43,32 +43,29 @@ extension UIView {
         window.rootViewController?.present(vc, animated: true)
         
         
-        // 拼接图片
-        
-        let width = CGFloat(375)
-        let height = CGFloat(500)
+        let width = self.frame.size.width
+        let height = self.frame.size.height
         let offScreenSize = CGSize(width: width, height: height)
         
         UIGraphicsBeginImageContextWithOptions(offScreenSize, false, UIScreen.main.scale)
         
-        let rect = CGRect(x: 0, y: 0, width: 60, height: 80)
-        vc.imageView.image?.draw(in: rect)
+        let rect = CGRect(x: 0, y: 0, width: width/2, height: height)
+        img?.draw(in: rect)
         
         
-        let rectR = CGRect(x: 30 , y: 30, width: 60, height: 80)
+        let rectR = CGRect(x: rect.origin.x + 200, y: 0, width: vc.imageViewLeftDown.frame.size.width, height: height)
         vc.imageViewLeftDown.image?.draw(in: rectR)
         
         
+       
         
         let resultingImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
-        
-        
+
         
         
         return resultingImage!
-//        return resultingImage!
+//        return img!
     }
     
 }

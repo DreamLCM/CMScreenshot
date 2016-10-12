@@ -29,23 +29,23 @@ class ScreenshotViewController: UIViewController {
         let btnItem = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItem = btnItem
         
-//        scrllView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-//        scrllView.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height+64)
-//        self.view.addSubview(scrllView)
+        scrllView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        scrllView.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height+64)
+        self.view.addSubview(scrllView)
         
         let backImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         backImageView.image = UIImage(named: "city.jpeg")
-        self.view.addSubview(backImageView)
+        scrllView.addSubview(backImageView)
 
 
-//        let qrImageView = UIImageView(frame: CGRect(x: self.view.frame.size.width/4*3, y: self.view.frame.size.height, width: self.view.frame.size.width/4, height: 64))
-//        qrImageView.image = UIImage(named: "qrCode.png")
-//        self.view.addSubview(qrImageView)
-//        
-//
-//        let imageViewLogo = UIImageView(frame: CGRect(x: 0, y: self.view.frame.size.height, width: self.view.frame.size.width/4, height: 64))
-//        imageViewLogo.image = UIImage(named: "swift.png")
-//        self.view.addSubview(imageViewLogo)
+        let qrImageView = UIImageView(frame: CGRect(x: self.view.frame.size.width/4*3, y: self.view.frame.size.height, width: self.view.frame.size.width/4, height: 64))
+        qrImageView.image = UIImage(named: "qrCode.png")
+        scrllView.addSubview(qrImageView)
+
+
+        let imageViewLogo = UIImageView(frame: CGRect(x: 0, y: self.view.frame.size.height, width: self.view.frame.size.width/4, height: 64))
+        imageViewLogo.image = UIImage(named: "swift.png")
+        scrllView.addSubview(imageViewLogo)
 
     }
     
@@ -54,20 +54,16 @@ class ScreenshotViewController: UIViewController {
         // 调用截图方法
         
         // 有导航栏
-        _ = self.navigationController?.view.cm_viewCutter2(title: "分享", textColor:UIColor.blue,handleShare: { (shotCutImage,shareVc) in
-            print(shotCutImage)
-            
-            
-            
-            let vc = ShareViewController()
-            shareVc.present(vc, animated: true, completion: {
-
-                vc.imageViewShare.image = shotCutImage
-                
-                
-            })
-
-        })
+//        _ = self.navigationController?.view.cm_viewCutter2(title: "分享", textColor:UIColor.blue,handleShare: { (shotCutImage,shareVc) in
+//            print(shotCutImage)
+//            
+//            let vc = ShareViewController()
+//            shareVc.present(vc, animated: true, completion: {
+//                vc.imageViewShare.image = shotCutImage
+//                
+//            })
+//
+//        })
         
         
         // 无导航栏
@@ -78,17 +74,15 @@ class ScreenshotViewController: UIViewController {
 //        }
         
         
-//        _ = self.scrllView.cm_scrollViewCutter(title: "分享", textColor: UIColor.blue, handleShare: { (shotCutImage, shareVc) in
-//            print(shotCutImage)
-//            
-//            
-//            
-//            let vc = ShareViewController()
-//            shareVc.present(vc, animated: true, completion: {
-//                vc.imageViewShare.image = shotCutImage
-//            })
-//
-//        })
+        _ = self.scrllView.cm_scrollViewCutter(title: "分享", textColor: UIColor.blue, handleShare: { (shotCutImage, shareVc) in
+            print(shotCutImage)
+            
+            let vc = ShareViewController()
+            shareVc.present(vc, animated: true, completion: {
+                vc.imageViewShare.image = shotCutImage
+            })
+
+        })
         
         
    

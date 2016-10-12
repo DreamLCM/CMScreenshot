@@ -13,7 +13,8 @@ extension UIScrollView {
     
     
    
-    func cm_scrollViewCutter(title: String,textColor: UIColor,handleShare: ((UIImage,UIViewController) -> Void)? = nil) -> UIImage {
+    
+    public func cm_scrollViewCutter(title: String,textColor: UIColor,handleShare: ((UIImage,UIViewController) -> Void)? = nil) -> UIImage {
     
         self.bounces = false
         self.isScrollEnabled = false
@@ -22,7 +23,6 @@ extension UIScrollView {
         let savedFrame = self.frame
         self.contentOffset = CGPoint.zero
         self.frame = CGRect(x: 0, y: 0, width: self.contentSize.width, height: self.contentSize.height)
-
         
         //截屏
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)

@@ -24,9 +24,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //截屏响应
     func userDidTakeScreenshot(notification: Notification) {
         print("检测到截屏")
-//        _ = self.window?.rootViewController?.view.cm_viewCutter2(handleShare: { (image) in
-//            print(image)
-//        })
+        _ = self.window?.rootViewController?.view.cm_viewCutter2(title: "分享", textColor:UIColor.blue,handleShare: { (image,shareVc) in
+            print(image)
+            
+            let vc = ShareViewController()
+            shareVc.present(vc, animated: true, completion: {
+                
+                vc.imageViewShare.image = image
+                
+                
+            })
+
+            
+            
+        })
+
         
     }
     
