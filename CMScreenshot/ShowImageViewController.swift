@@ -52,7 +52,7 @@ class ShowImageViewController: UIViewController {
         self.view.backgroundColor = UIColor(white: 1/256, alpha: 0.9)
         
         // scrollView
-        scrollView = UIScrollView(frame: CGRect(x: 20, y: 0, width: self.view.bounds.size.width - 40, height: self.view.bounds.size.height - 50))
+        scrollView = UIScrollView(frame: CGRect(x: 20, y: 25, width: self.view.bounds.size.width - 40, height: self.view.bounds.size.height - 50))
         scrollView.contentSize = CGSize(width: scrollView.bounds.size.width, height: image.size.height * scrollView.bounds.size.width / image.size.width)
         scrollView.layer.cornerRadius = 8
         scrollView.layer.masksToBounds = true
@@ -63,7 +63,7 @@ class ShowImageViewController: UIViewController {
         self.view.addSubview(scrollView)
         
         // imageView
-        imageView = UIImageView(frame: CGRect(x: 0, y: 25, width: self.scrollView.contentSize.width, height: self.scrollView.contentSize.height))
+        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.scrollView.contentSize.width, height: self.scrollView.contentSize.height))
         imageView.image = image
         imageView.backgroundColor = UIColor.lightGray
         imageView.layer.cornerRadius = 8
